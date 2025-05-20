@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+struct TrackerCategory {
+    var headingCategory: String
+    var trackers: [Tracker]
+}
+
+// MARK: - Equatable
+
+extension TrackerCategory: Equatable {
+    static func == (lhs: TrackerCategory, rhs: TrackerCategory) -> Bool {
+        lhs.headingCategory == rhs.headingCategory
+    }
+}
