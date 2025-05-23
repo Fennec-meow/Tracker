@@ -11,7 +11,7 @@ import UIKit
 
 final class SupplementaryView: UICollectionReusableView {
     
-    // MARK: Pablic Property
+    // MARK: Public Property
     
     static let reuseIdentifier = "trackerSupplementaryView"
     

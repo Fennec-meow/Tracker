@@ -17,7 +17,7 @@ protocol NewCategoryViewControllerDelegate: AnyObject {
 
 final class NewCategoryViewController: UIViewController {
     
-    // MARK: Pablic Property
+    // MARK: Public Property
     
     weak var delegate: NewCategoryViewControllerDelegate?
     
@@ -52,7 +52,7 @@ private extension NewCategoryViewController {
     }
     
     func isSubmitButtonEnabled() -> Bool {
-            !(ui.newCategoryTextField.text?.isEmpty ?? false)
+        !(ui.newCategoryTextField.text?.isEmpty ?? false)
     }
     
     @objc func didTapNewCategoryButton() {

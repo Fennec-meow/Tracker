@@ -17,7 +17,7 @@ protocol CreatingTrackerViewControllerDelegate: AnyObject {
 
 final class CreatingTrackerViewController: UIViewController {
     
-    // MARK: Pablic Property
+    // MARK: Public Property
     
     weak var delegate: TrackersViewControllerDelegate?
     

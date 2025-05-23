@@ -11,14 +11,14 @@ import UIKit
 
 protocol TrackerCollectionViewCellDelegate: AnyObject {
     func completeTracker(id: UUID, at indexPath: IndexPath)
-    func uncompleteTracker(id: UUID, at indexPath: IndexPath)
+    func incompleteTracker(id: UUID, at indexPath: IndexPath)
 }
 
 // MARK: - TrackerCollectionViewCell
 
 final class TrackerCollectionViewCell: UICollectionViewCell {
     
-    // MARK: Pablic Property
+    // MARK: Public Property
     
     static let reuseIdentifier = "TrackerCell"
     weak var delegate: TrackerCollectionViewCellDelegate?    
@@ -71,7 +71,7 @@ extension TrackerCollectionViewCell {
         ui.emojiLabel.text = tracker.emoji
         ui.completedDaysLabel.text = formatDays(completedDays)
         
-        addButton(tracker: tracker)
+        addButton()
     }
     
     func formatDays(_ days: Int) -> String {
@@ -90,10 +90,11 @@ extension TrackerCollectionViewCell {
         }
     }
     
-    func addButton(tracker: Tracker) {
+    func addButton() {
+        guard let trackerColor = ui.mainView.backgroundColor else { return }
         let image = !isCompletedToday ? UIImage(systemName: "plus") : UIImage(systemName: "checkmark")
         ui.counterButton.setImage(image, for: .normal)
-        ui.counterButton.backgroundColor = isCompletedToday ? tracker.color.withAlphaComponent(0.3) : tracker.color
+        ui.counterButton.backgroundColor = isCompletedToday ? trackerColor.withAlphaComponent(0.3) : trackerColor
         ui.counterButton.imageView?.contentMode = .center
     }
     
@@ -102,10 +103,10 @@ extension TrackerCollectionViewCell {
             assertionFailure("no id")
             return
         }
-        if isCompletedToday {
-            delegate?.uncompleteTracker(id: id, at: indexPath)
-        } else {
+        if !isCompletedToday {
             delegate?.completeTracker(id: id, at: indexPath)
+        } else {
+            delegate?.incompleteTracker(id: id, at: indexPath)
         }
     }
 }

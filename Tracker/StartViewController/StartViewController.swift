@@ -12,13 +12,13 @@ import UIKit
 final class StartViewController: UIViewController {
     
     // MARK: Private Property
-
+    
     private lazy var ui: UI = {
         let ui = createUI()
         layout(ui)
         return ui
     }()
-
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ private extension StartViewController {
 // MARK: - UI Configuring
 
 extension StartViewController {
-   
+    
     // MARK: UI components
     
     struct UI {

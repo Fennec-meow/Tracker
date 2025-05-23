@@ -11,7 +11,7 @@ import UIKit
 
 final class CustomTableViewCell: UITableViewCell {
     
-    // MARK: Pablic Property
+    // MARK: Public Property
     
     static let reuseIdentifier = "CustomCell"
     

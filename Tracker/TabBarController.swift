@@ -10,13 +10,17 @@ import UIKit
 // MARK: - TabBarController
 
 final class TabBarController: UITabBarController {
-
+    
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewControllers()
         setupUI()
     }
 }
+
+// MARK: - Private Methods
 
 private extension TabBarController {
     func setupViewControllers() {
@@ -26,7 +30,7 @@ private extension TabBarController {
             image: ImageConstants.tabTrackerActive,
             selectedImage: nil
         )
-
+        
         let statisticsViewController = StatisticsViewController()
         statisticsViewController.tabBarItem = UITabBarItem(
             title: "Статистика",
@@ -36,6 +40,8 @@ private extension TabBarController {
         self.viewControllers = [trackersViewController, statisticsViewController]
     }
 }
+
+// MARK: - UI Configuring
 
 private extension TabBarController {
     func setupUI() {
@@ -56,7 +62,12 @@ private extension TabBarController {
     }
 }
 
+// MARK: - Constants
+
 private extension TabBarController {
+    
+    // MARK: ImageConstants
+    
     enum ImageConstants {
         static let tabTrackerActive = UIImage(named: "trackers")
         static let tabStatisticActive = UIImage(named: "stats")

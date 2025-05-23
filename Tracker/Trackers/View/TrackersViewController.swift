@@ -287,13 +287,19 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
 
 extension TrackersViewController: TrackerCollectionViewCellDelegate {
     func completeTracker(id: UUID, at indexPath: IndexPath) {
+        
+        if !isCurrentDate(ui.datePicker.date) && ui.datePicker.date > Date() { return }
+        
         let trackerRecord = TrackerRecord(id: id, date: ui.datePicker.date)
         completedTrackers.append(trackerRecord)
         
         ui.collectionView.reloadItems(at: [indexPath])
     }
     
-    func uncompleteTracker(id: UUID, at indexPath: IndexPath) {
+    func incompleteTracker(id: UUID, at indexPath: IndexPath) {
+        
+        if !isCurrentDate(ui.datePicker.date) && ui.datePicker.date > Date() { return }
+        
         completedTrackers.removeAll { trackerRecord in
             isSameTrackerRecord(trackerRecord: trackerRecord, id: id)
         }
@@ -323,8 +329,11 @@ extension TrackersViewController: TrackersViewControllerDelegate {
     
     func renewCategory(for oldCategory: TrackerCategory, _ tracker: Tracker) {
         if let oldCategoryIndex: Int = visibleCategories.firstIndex(of: oldCategory) {
-            var newCategory = TrackerCategory(headingCategory: oldCategory.headingCategory, trackers: oldCategory.trackers)
-            newCategory.trackers.append(tracker)
+            let updatedTrackers = oldCategory.trackers + [tracker]
+            let newCategory = TrackerCategory(
+                headingCategory: oldCategory.headingCategory,
+                trackers: updatedTrackers
+            )
             visibleCategories.remove(at: oldCategoryIndex)
             visibleCategories.insert(newCategory, at: oldCategoryIndex)
         }

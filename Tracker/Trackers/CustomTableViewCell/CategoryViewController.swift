@@ -17,7 +17,7 @@ protocol CategoryViewControllerDelegate: AnyObject {
 
 final class CategoryViewController: UIViewController {
     
-    // MARK: Pablic Property
+    // MARK: Public Property
     
     weak var delegate: CategoryViewControllerDelegate?
     var contentsCategory: [String] = []

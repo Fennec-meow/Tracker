@@ -8,8 +8,8 @@
 import Foundation
 
 struct TrackerCategory {
-    var headingCategory: String
-    var trackers: [Tracker]
+    let headingCategory: String
+    let trackers: [Tracker]
 }
 
 // MARK: - Equatable

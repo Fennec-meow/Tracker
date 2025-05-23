@@ -17,7 +17,7 @@ protocol ScheduleDelegate: AnyObject {
 
 final class ScheduleViewController: UIViewController {
     
-    // MARK: Pablic Property
+    // MARK: Public Property
     
     var delegate: ScheduleDelegate?
     var currentSchedule: [WeekDay] = []

@@ -11,7 +11,7 @@ import UIKit
 
 final class CreatingHabitViewController: UIViewController {
     
-    // MARK: Pablic Property
+    // MARK: Public Property
     
     weak var delegate: CreatingTrackerViewControllerDelegate?
     
