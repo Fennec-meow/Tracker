@@ -24,36 +24,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CEA219C82DBA1BC5002181BF /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEA219DE2DBA1BC6002181BF /* TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEA219E82DBA1BC6002181BF /* TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA219C82DBA1BC5002181BF /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Tracker.app; path = "/Users/user/Desktop/Swift/Практикум/Tracker/build/Debug-iphoneos/Tracker.app"; sourceTree = "<absolute>"; };
+		CEA219DE2DBA1BC6002181BF /* TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TrackerTests.xctest; path = "/Users/user/Desktop/Swift/Практикум/Tracker/build/Debug-iphoneos/Tracker.app/PlugIns/TrackerTests.xctest"; sourceTree = "<absolute>"; };
+		CEA219E82DBA1BC6002181BF /* TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TrackerUITests.xctest; path = "/Users/user/Desktop/Swift/Практикум/Tracker/build/Debug-iphoneos/TrackerUITests-Runner.app/PlugIns/TrackerUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CEA219F02DBA1BC6002181BF /* Exceptions for "Tracker" folder in "Tracker" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = CEA219C72DBA1BC5002181BF /* Tracker */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		CEA219CA2DBA1BC5002181BF /* Tracker */ = {
+		CEA6A0DF2DE0968D001EACA3 /* Tracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				CEA219F02DBA1BC6002181BF /* Exceptions for "Tracker" folder in "Tracker" target */,
-			);
 			path = Tracker;
 			sourceTree = "<group>";
 		};
-		CEA219E12DBA1BC6002181BF /* TrackerTests */ = {
+		CEA6A0E12DE0968D001EACA3 /* TrackerTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TrackerTests;
 			sourceTree = "<group>";
 		};
-		CEA219EB2DBA1BC6002181BF /* TrackerUITests */ = {
+		CEA6A0E42DE0968D001EACA3 /* TrackerUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TrackerUITests;
 			sourceTree = "<group>";
@@ -88,21 +75,10 @@
 		CEA219BF2DBA1BC5002181BF = {
 			isa = PBXGroup;
 			children = (
-				CEA219CA2DBA1BC5002181BF /* Tracker */,
-				CEA219E12DBA1BC6002181BF /* TrackerTests */,
-				CEA219EB2DBA1BC6002181BF /* TrackerUITests */,
-				CEA219C92DBA1BC5002181BF /* Products */,
+				CEA6A0DF2DE0968D001EACA3 /* Tracker */,
+				CEA6A0E12DE0968D001EACA3 /* TrackerTests */,
+				CEA6A0E42DE0968D001EACA3 /* TrackerUITests */,
 			);
-			sourceTree = "<group>";
-		};
-		CEA219C92DBA1BC5002181BF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CEA219C82DBA1BC5002181BF /* Tracker.app */,
-				CEA219DE2DBA1BC6002181BF /* TrackerTests.xctest */,
-				CEA219E82DBA1BC6002181BF /* TrackerUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,9 +95,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				CEA219CA2DBA1BC5002181BF /* Tracker */,
 			);
 			name = Tracker;
 			packageProductDependencies = (
@@ -143,9 +116,6 @@
 			dependencies = (
 				CEA219E02DBA1BC6002181BF /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				CEA219E12DBA1BC6002181BF /* TrackerTests */,
-			);
 			name = TrackerTests;
 			packageProductDependencies = (
 			);
@@ -165,9 +135,6 @@
 			);
 			dependencies = (
 				CEA219EA2DBA1BC6002181BF /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				CEA219EB2DBA1BC6002181BF /* TrackerUITests */,
 			);
 			name = TrackerUITests;
 			packageProductDependencies = (
@@ -209,7 +176,7 @@
 			mainGroup = CEA219BF2DBA1BC5002181BF;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = CEA219C92DBA1BC5002181BF /* Products */;
+			productRefGroup = CEA219BF2DBA1BC5002181BF;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
