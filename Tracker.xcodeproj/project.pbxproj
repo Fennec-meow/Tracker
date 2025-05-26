@@ -248,7 +248,7 @@
 			mainGroup = CEA219BF2DBA1BC5002181BF;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = CEA219C92DBA1BC5002181BF /* Products */;
+			productRefGroup = CEA219BF2DBA1BC5002181BF;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
