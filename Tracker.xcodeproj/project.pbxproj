@@ -32,6 +32,7 @@
 		044036262DDB913600D4A187 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044035EA2DDB913600D4A187 /* Assets.xcassets */; };
 		044036272DDB913600D4A187 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044035EC2DDB913600D4A187 /* LaunchScreen.storyboard */; };
 		CEB6F03C2DE5C15F0049B761 /* CreatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6F03B2DE5C15F0049B761 /* CreatingCollectionViewCell.swift */; };
+		CEB6F0722DE5EC390049B761 /* CreatingSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6F0712DE5EC390049B761 /* CreatingSupplementaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		0440360C2DDB913600D4A187 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CEA219C82DBA1BC5002181BF /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6F03B2DE5C15F0049B761 /* CreatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingCollectionViewCell.swift; sourceTree = "<group>"; };
+		CEB6F0712DE5EC390049B761 /* CreatingSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingSupplementaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				044035F32DDB913600D4A187 /* CreatingHabitViewController.swift */,
 				044035F52DDB913600D4A187 /* CreatingTrackerViewController.swift */,
 				CEB6F03B2DE5C15F0049B761 /* CreatingCollectionViewCell.swift */,
+				CEB6F0712DE5EC390049B761 /* CreatingSupplementaryView.swift */,
 			);
 			path = CreatingTracker;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				044036102DDB913600D4A187 /* CreatingHabitViewController.swift in Sources */,
 				044036122DDB913600D4A187 /* CreatingTrackerViewController.swift in Sources */,
 				044036132DDB913600D4A187 /* CategoryViewController.swift in Sources */,
+				CEB6F0722DE5EC390049B761 /* CreatingSupplementaryView.swift in Sources */,
 				044036142DDB913600D4A187 /* CustomTableViewCell.swift in Sources */,
 				044036152DDB913600D4A187 /* NewCategoryViewController.swift in Sources */,
 				044036162DDB913600D4A187 /* ScheduleViewController.swift in Sources */,
