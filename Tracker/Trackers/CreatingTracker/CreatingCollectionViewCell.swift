@@ -34,6 +34,20 @@ final class CreatingCollectionViewCell: UICollectionViewCell {
     }
 }
 
+// MARK: - Public Methods
+
+extension CreatingCollectionViewCell {
+    
+    func configure(with emoji: String? = nil, backgroundColor: UIColor? = nil) {
+        ui.creatingNameLabel.text = emoji
+        if backgroundColor == nil {
+            ui.creatingNameLabel.backgroundColor = .clear
+        } else {
+            ui.creatingNameLabel.backgroundColor = backgroundColor
+        }
+    }
+}
+
 // MARK: - UI Configuring
 
 extension CreatingCollectionViewCell {
@@ -53,6 +67,7 @@ extension CreatingCollectionViewCell {
         creatingNameLabel.layer.cornerRadius = 8
         creatingNameLabel.layer.masksToBounds = true
         creatingNameLabel.textAlignment = .center
+        creatingNameLabel.font = .systemFont(ofSize: 32, weight: .bold)
         contentView.addSubview(creatingNameLabel)
         
         return .init(
