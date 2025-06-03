@@ -46,7 +46,7 @@ final class CreatingHabitViewController: UIViewController {
         .colorSelection16, .colorSelection17, .colorSelection18
     ]
     
-    lazy var ui: UI = {
+    private lazy var ui: UI = {
         let ui = createUI()
         layout(ui)
         return ui
@@ -95,10 +95,14 @@ private extension CreatingHabitViewController {
     
     func isSubmitButtonEnabled() -> Bool {
         if isHabit {
+            selectedEmoji != nil &&
+            selectedColor != nil &&
             scheduleText != nil &&
             categoryText != nil &&
             !(ui.trackerNameTextField.text?.isEmpty ?? false)
         } else {
+            selectedEmoji != nil &&
+            selectedColor != nil &&
             categoryText != nil &&
             !(ui.trackerNameTextField.text?.isEmpty ?? false)
         }
@@ -125,7 +129,7 @@ private extension CreatingHabitViewController {
     @objc func didTapCreateButton() {
         guard let trackerName = ui.trackerNameTextField.text else { return }
         let tracker = Tracker(
-            id: UUID(),
+            trackerID: UUID(),
             name: trackerName,
             color: selectedColor ?? UIColor.black,
             emoji: selectedEmoji ?? String(),
@@ -230,7 +234,7 @@ extension CreatingHabitViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
-    
+        
         return 0
     }
     
@@ -239,7 +243,7 @@ extension CreatingHabitViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int
     ) -> CGFloat {
-    
+        
         return 5
     }
     
@@ -294,7 +298,7 @@ extension CreatingHabitViewController: UICollectionViewDataSource {
         ) as? CreatingCollectionViewCell else { return UICollectionViewCell() }
         
         if indexPath.section == 0 {
-             let emoji = emojis[indexPath.row]
+            let emoji = emojis[indexPath.row]
             cell.configure(with: emoji)
         } else if indexPath.section == 1 {
             let color = colors[indexPath.row]
@@ -317,10 +321,8 @@ extension CreatingHabitViewController: UICollectionViewDataSource {
         
         if indexPath.section == 0 {
             view.showNewTracker(with: "Emoji")
-//            view.ui.creatingTitleLabel.text = "Emoji"
         } else if indexPath.section == 1 {
             view.showNewTracker(with: "Цвет")
-//            view.ui.creatingTitleLabel.text = "Цвет"
         }
         return view
     }
@@ -331,7 +333,7 @@ extension CreatingHabitViewController: UICollectionViewDataSource {
             guard let cellToDeselect = collectionView.cellForItem(at: .init(item: selectedIndexEmoji ?? .zero, section: 0)) else { return }
             cellToDeselect.backgroundColor = .clear
             // select cell
-           guard let cell = collectionView.cellForItem(at: indexPath) as? CreatingCollectionViewCell else { return }
+            guard let cell = collectionView.cellForItem(at: indexPath) as? CreatingCollectionViewCell else { return }
             cell.layer.cornerRadius = 16
             cell.layer.masksToBounds = true
             cell.backgroundColor = .ypLightGray
@@ -349,6 +351,12 @@ extension CreatingHabitViewController: UICollectionViewDataSource {
             cell.layer.borderWidth = 3
             selectedColor = colors[indexPath.row]
             selectedIndexColor = indexPath.item
+        }
+        ui.createButton.isEnabled = isSubmitButtonEnabled()
+        if ui.createButton.isEnabled {
+            ui.createButton.backgroundColor = .ypBlack
+        } else {
+            ui.createButton.backgroundColor = .ypGray
         }
     }
 }
@@ -459,14 +467,13 @@ extension CreatingHabitViewController {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(contentView)
-
+        
         let emojisColorsCollectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewFlowLayout()
         )
         emojisColorsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         emojisColorsCollectionView.isScrollEnabled = false
-//        emojisColorsCollectionView.backgroundColor = .red
         emojisColorsCollectionView.register(
             CreatingCollectionViewCell.self,
             forCellWithReuseIdentifier: CreatingCollectionViewCell.reuseIdentifier
@@ -536,7 +543,7 @@ extension CreatingHabitViewController {
             ui.trackerNameTextField.trailingAnchor.constraint(equalTo: ui.contentView.trailingAnchor, constant: -16),
             
             ui.contentsTableView.heightAnchor.constraint(equalToConstant: isHabit ? 150 : 75),
-
+            
             ui.contentsTableView.topAnchor.constraint(equalTo: ui.trackerNameTextField.bottomAnchor, constant: 24),
             ui.contentsTableView.leadingAnchor.constraint(equalTo: ui.contentView.leadingAnchor, constant: 16),
             ui.contentsTableView.trailingAnchor.constraint(equalTo: ui.contentView.trailingAnchor, constant: -16),
@@ -564,7 +571,6 @@ extension CreatingHabitViewController {
             ui.emojisColorsCollectionView.heightAnchor.constraint(equalToConstant: 440)
         ])
         ui.scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 105)
-
     }
     
     func setupUI() {

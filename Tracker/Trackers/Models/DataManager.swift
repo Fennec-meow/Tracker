@@ -17,7 +17,7 @@ final class DataManager {
             headingCategory: "Домашний уют",
             trackers: [
                 Tracker(
-                    id: UUID(),
+                    trackerID: UUID(),
                     name: "Поливать растения",
                     color: .colorSelection5,
                     emoji: "❤️",
@@ -30,7 +30,7 @@ final class DataManager {
             headingCategory: "Радостные мелочи",
             trackers: [
                 Tracker(
-                    id: UUID(),
+                    trackerID: UUID(),
                     name: "Кошка заслонила камеру на созвоне",
                     color: .colorSelection2,
                     emoji: "😻",
@@ -38,7 +38,7 @@ final class DataManager {
                     type: .habit
                 ),
                 Tracker(
-                    id: UUID(),
+                    trackerID: UUID(),
                     name: "Бабушка прислала открытку в вотсапе",
                     color: .colorSelection1,
                     emoji: "🌺",
@@ -46,7 +46,7 @@ final class DataManager {
                     type: .habit
                 ),
                 Tracker(
-                    id: UUID(),
+                    trackerID: UUID(),
                     name: "Свидания в апреле",
                     color: .colorSelection14,
                     emoji: "❤️",
@@ -59,7 +59,7 @@ final class DataManager {
             headingCategory: "Самочувствие",
             trackers: [
                 Tracker(
-                    id: UUID(),
+                    trackerID: UUID(),
                     name: "Хорошее настроение",
                     color: .colorSelection16,
                     emoji: "🙂",
@@ -67,7 +67,7 @@ final class DataManager {
                     type: .habit
                 ),
                 Tracker(
-                    id: UUID(),
+                    trackerID: UUID(),
                     name: "Легкая тревожность",
                     color: .colorSelection8,
                     emoji: "😪",

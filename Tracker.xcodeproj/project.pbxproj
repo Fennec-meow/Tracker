@@ -66,6 +66,14 @@
 		CEB6F0712DE5EC390049B761 /* CreatingSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingSupplementaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CEF05E5C2DE8661500C0826B /* CoreData */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		CEA219C52DBA1BC5002181BF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -179,6 +187,7 @@
 		0440360D2DDB913600D4A187 /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				CEF05E5C2DE8661500C0826B /* CoreData */,
 				044035ED2DDB913600D4A187 /* Resources */,
 				044035EF2DDB913600D4A187 /* StartViewController */,
 				044035F22DDB913600D4A187 /* Statistics */,
@@ -221,6 +230,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CEF05E5C2DE8661500C0826B /* CoreData */,
 			);
 			name = Tracker;
 			packageProductDependencies = (

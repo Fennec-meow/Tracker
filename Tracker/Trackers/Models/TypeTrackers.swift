@@ -11,4 +11,3 @@ enum TypeTrackers {
     case habit
     case irregularEvent
 }
-
