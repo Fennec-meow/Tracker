@@ -19,6 +19,10 @@ final class TrackersViewController: UIViewController {
     
     // MARK: Private Property
     
+    private let trackerStore: TrackerStoreProtocol = TrackerStore()
+    private let trackerCategoryStore: TrackerCategoryStoreProtocol = TrackerCategoryStore()
+    private let trackerRecordStore: TrackerRecordStoreProtocol = TrackerRecordStore()
+    
     private var categories: [TrackerCategory] = []
     private var visibleCategories: [TrackerCategory] = []
     
@@ -40,6 +44,7 @@ final class TrackersViewController: UIViewController {
         reloadData()
         updateUIForCategory()
         updateUIForCompletedTrackers()
+        trackerStore.setDelegate(self)
     }
 }
 
@@ -48,8 +53,13 @@ final class TrackersViewController: UIViewController {
 private extension TrackersViewController {
     
     func reloadData() {
-        categories = dataManager.categories
-        datePickerValueChanged()
+        do {
+            categories = try trackerCategoryStore.getCategories()
+            datePickerValueChanged()
+        } catch {
+            assertionFailure("Failed to get categories with \(error)")
+        }
+        reloadVisibleCategories()
     }
     
     func isTrackerComplitedToday(id: UUID) -> Bool {
@@ -63,7 +73,7 @@ private extension TrackersViewController {
             trackerRecord.date,
             inSameDayAs: ui.datePicker.date
         )
-        return trackerRecord.id == id && isSameDay
+        return trackerRecord.trackerRecordID == id && isSameDay
     }
     
     func showHiddenImage() {
@@ -216,9 +226,9 @@ extension TrackersViewController: UICollectionViewDataSource {
         
         cell.delegate = self
         
-        let isComplitedToday = isTrackerComplitedToday(id: tracker.id)
+        let isComplitedToday = isTrackerComplitedToday(id: tracker.trackerID)
         let isComplitedDay = completedTrackers.filter {
-            $0.id == tracker.id
+            $0.trackerRecordID == tracker.trackerID
         }.count
         
         cell.schedule(
@@ -290,7 +300,7 @@ extension TrackersViewController: TrackerCollectionViewCellDelegate {
         
         if !isCurrentDate(ui.datePicker.date) && ui.datePicker.date > Date() { return }
         
-        let trackerRecord = TrackerRecord(id: id, date: ui.datePicker.date)
+        let trackerRecord = TrackerRecord(trackerRecordID: id, date: ui.datePicker.date)
         completedTrackers.append(trackerRecord)
         
         ui.collectionView.reloadItems(at: [indexPath])
@@ -311,20 +321,14 @@ extension TrackersViewController: TrackerCollectionViewCellDelegate {
 
 extension TrackersViewController: TrackersViewControllerDelegate {
     func tracker(tracker: Tracker, for category: String) {
-        var categoryAdded = false
-        for oldCategory in categories {
-            if oldCategory.headingCategory == category {
-                renewCategory(for: oldCategory, tracker)
-                categoryAdded = true
-                break
-            }
-        }
-        
-        if !categoryAdded {
+        do {
+            try trackerStore.addTracker(tracker, toCategory: TrackerCategory(headingCategory: category, trackers: []))
             categories.append(TrackerCategory(headingCategory: category, trackers: [tracker]))
+            updateUIForCategory()
+            reloadVisibleCategories()
+        } catch {
+            assertionFailure("Failed to add tracker to Core Data: \(error)")
         }
-        updateUIForCategory()
-        reloadVisibleCategories()
     }
     
     func renewCategory(for oldCategory: TrackerCategory, _ tracker: Tracker) {
@@ -336,6 +340,18 @@ extension TrackersViewController: TrackersViewControllerDelegate {
             )
             visibleCategories.remove(at: oldCategoryIndex)
             visibleCategories.insert(newCategory, at: oldCategoryIndex)
+        }
+    }
+}
+
+// MARK: - TrackerStoreDelegate
+
+extension TrackersViewController: TrackerStoreDelegate {
+    
+    func trackerStore(_ store: TrackerStoreUpdate) {
+        ui.collectionView.performBatchUpdates {
+            ui.collectionView.insertSections(store.insertedSections)
+            ui.collectionView.insertItems(at: store.insertedIndexPaths)
         }
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 // MARK: - NewCategoryViewControllerDelegate
 
 protocol NewCategoryViewControllerDelegate: AnyObject {
-    func didCreateNewCategory(withName name: String)
+    func didCreateNewCategory(withName name: TrackerCategory)
 }
 
 // MARK: - NewCategoryViewController
@@ -56,8 +56,10 @@ private extension NewCategoryViewController {
     }
     
     @objc func didTapNewCategoryButton() {
-        let newCategoryName = ui.newCategoryTextField.text ?? ""
-        delegate?.didCreateNewCategory(withName: newCategoryName)
+        if let newCategoryName = ui.newCategoryTextField.text, !newCategoryName.isEmpty {
+            let newCategory = TrackerCategory(headingCategory: newCategoryName, trackers: [])
+            delegate?.didCreateNewCategory(withName: newCategory)
+        }
         dismiss(animated: true)
     }
 }
