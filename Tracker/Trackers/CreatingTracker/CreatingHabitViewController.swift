@@ -17,7 +17,7 @@ final class CreatingHabitViewController: UIViewController {
     
     // MARK: Private Property
     
-    private let contentsTableView = ["Категория", "Расписание"]
+    private var contentsTableView = ["Категория", "Расписание"]
     private var scheduleDay: [WeekDay] = []
     private var scheduleCategory = String()
     
@@ -61,6 +61,9 @@ final class CreatingHabitViewController: UIViewController {
     
     init(isHabit value: Bool) {
         self.isHabit = value
+        if !isHabit {
+            contentsTableView.removeLast()
+        }
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -193,7 +196,7 @@ extension CreatingHabitViewController: UITableViewDelegate {
 extension CreatingHabitViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isHabit ? contentsTableView.count : 1
+        return contentsTableView.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -209,7 +212,8 @@ extension CreatingHabitViewController: UITableViewDataSource {
         cell.configure(
             with: contentsTableView[indexPath.row],
             isCategory: indexPath.row == 0,
-            subtitle: isCategory ? categoryText : scheduleText
+            subtitle: isCategory ? categoryText : scheduleText,
+            isLast: contentsTableView[indexPath.row] == contentsTableView.last
         )
         
         return cell
@@ -342,7 +346,7 @@ extension CreatingHabitViewController: UICollectionViewDataSource {
         } else if indexPath.section == 1 {
             // deselect cell
             guard let cellToDeselect = collectionView.cellForItem(at: .init(item: selectedIndexColor ?? .zero, section: 1)) else { return }
-            cellToDeselect.layer.borderWidth = 0
+            cellToDeselect.layer.borderWidth = .zero
             // select cell
             guard let cell = collectionView.cellForItem(at: indexPath) as? CreatingCollectionViewCell else { return }
             cell.layer.cornerRadius = 8
@@ -431,10 +435,12 @@ extension CreatingHabitViewController {
         
         let trackerNameTextField = UITextField()
         trackerNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        trackerNameTextField.placeholder = "  Введите название трекера"
+        trackerNameTextField.placeholder = "Введите название трекера"
         trackerNameTextField.layer.cornerRadius = 16
         trackerNameTextField.backgroundColor = .ypBackground
         trackerNameTextField.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        trackerNameTextField.returnKeyType = .done
+        trackerNameTextField.leftPadding(16)
         trackerNameTextField.delegate = self
         view.addSubview(trackerNameTextField)
         

@@ -74,7 +74,11 @@ final class TrackerStore: NSObject {
         )
         controller.delegate = self
         
-        try? controller.performFetch()
+        do {
+            try controller.performFetch()
+        } catch {
+            assertionFailure("Failed to fetch trackers: \(error)")
+        }
         return controller
     }()
     

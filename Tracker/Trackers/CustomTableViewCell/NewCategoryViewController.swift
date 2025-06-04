@@ -103,6 +103,7 @@ extension NewCategoryViewController {
         newCategoryTextField.layer.cornerRadius = 16
         newCategoryTextField.backgroundColor = .ypBackground
         newCategoryTextField.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        newCategoryTextField.leftPadding(16)
         newCategoryTextField.delegate = self
         view.addSubview(newCategoryTextField)
         

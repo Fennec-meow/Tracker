@@ -17,7 +17,7 @@ final class CreatingCollectionViewCell: UICollectionViewCell {
     
     // MARK: Private Property
     
-    private lazy var ui: UI = {
+    private lazy var ui: CellUI = {
         let ui = createUI()
         layout(ui)
         return ui
@@ -40,27 +40,23 @@ extension CreatingCollectionViewCell {
     
     func configure(with emoji: String? = nil, backgroundColor: UIColor? = nil) {
         ui.creatingNameLabel.text = emoji
-        if backgroundColor == nil {
-            ui.creatingNameLabel.backgroundColor = .clear
-        } else {
-            ui.creatingNameLabel.backgroundColor = backgroundColor
-        }
+        ui.creatingNameLabel.backgroundColor = backgroundColor ?? .clear
     }
 }
 
-// MARK: - UI Configuring
+// MARK: - CellUI Configuring
 
 extension CreatingCollectionViewCell {
     
-    // MARK: UI components
+    // MARK: CellUI components
     
-    struct UI {
+    struct CellUI {
         let creatingNameLabel: UILabel
     }
     
-    // MARK: Creating UI components
+    // MARK: Creating CellUI components
     
-    func createUI() -> UI {
+    func createUI() -> CellUI {
         
         let creatingNameLabel = UILabel()
         creatingNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -75,9 +71,9 @@ extension CreatingCollectionViewCell {
         )
     }
     
-    // MARK: UI component constants
+    // MARK: CellUI component constants
     
-    func layout(_ ui: UI) {
+    func layout(_ ui: CellUI) {
         
         NSLayoutConstraint.activate( [
             

@@ -192,11 +192,15 @@ extension TrackersViewController: UITextFieldDelegate {
 // MARK: - UICollectionViewDelegate
 
 extension TrackersViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemsAt indexPaths: [IndexPath], point: CGPoint) -> UIContextMenuConfiguration? {
-        guard indexPaths.count > 0 else {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        guard indexPaths.count > .zero else {
             return nil
         }
-        let indexPath = indexPaths[0]
+        let indexPath = indexPaths.first
         return UIContextMenuConfiguration(actionProvider: { actions in
             return UIMenu(children: [])
         })
@@ -412,10 +416,11 @@ extension TrackersViewController {
         
         let searchTextField = UISearchTextField()
         searchTextField.translatesAutoresizingMaskIntoConstraints = false
-        searchTextField.placeholder = " Поиск"
+        searchTextField.placeholder = "Поиск"
         searchTextField.layer.cornerRadius = 10
         searchTextField.font = FontsConstants.searchTextField
         searchTextField.delegate = self
+        searchTextField.backgroundColor = .ypSearchBackground
         view.addSubview(searchTextField)
         
         let collectionView = UICollectionView(
@@ -436,6 +441,7 @@ extension TrackersViewController {
         )
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.backgroundColor = view.backgroundColor
         view.addSubview(collectionView)
         
         let lackOfTrackersImageView = UIImageView()
