@@ -21,7 +21,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
     // MARK: Public Property
     
     static let reuseIdentifier = "TrackerCell"
-    weak var delegate: TrackerCollectionViewCellDelegate?    
+    weak var delegate: TrackerCollectionViewCellDelegate?
     
     // MARK: Private Property
     
@@ -63,7 +63,7 @@ extension TrackerCollectionViewCell {
         completedDays: Int,
         indexPath: IndexPath
     ) {
-        self.id = tracker.id
+        self.id = tracker.trackerID
         self.isCompletedToday = isCompletedToday
         self.indexPath = indexPath
         ui.nameLabel.text = tracker.name
