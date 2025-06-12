@@ -52,12 +52,7 @@ final class CreatingHabitViewController: UIViewController {
         return ui
     }()
     
-    // MARK: Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
+    // MARK: Constructor
     
     init(isHabit value: Bool) {
         self.isHabit = value
@@ -69,6 +64,13 @@ final class CreatingHabitViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
     }
 }
 
@@ -177,7 +179,6 @@ extension CreatingHabitViewController: UITableViewDelegate {
         
         if indexPath.row == 0 {
             let controller = CategoryViewController()
-            controller.contentsCategory = contentsCategory
             controller.delegate = self
             navigationController = UINavigationController(rootViewController: controller)
             self.present(navigationController, animated: true)
@@ -414,7 +415,7 @@ extension CreatingHabitViewController: ScheduleDelegate {
 
 // MARK: - UI Configuring
 
-extension CreatingHabitViewController {
+private extension CreatingHabitViewController {
     
     // MARK: UI components
     

@@ -83,7 +83,7 @@ extension CreatingTrackerViewController: CreatingTrackerViewControllerDelegate {
 
 // MARK: - UI Configuring
 
-extension CreatingTrackerViewController {
+private extension CreatingTrackerViewController {
     
     // MARK: UI components
     
