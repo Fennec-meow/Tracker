@@ -35,7 +35,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
         return ui
     }()
     
-    // MARK: Lifecycle
+    // MARK: Constructor
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,6 +45,8 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Lifecycle
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         id = nil
@@ -53,7 +55,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
     }
 }
 
-// MARK: - Private Methods
+// MARK: - Public Methods
 
 extension TrackerCollectionViewCell {
     
@@ -73,6 +75,11 @@ extension TrackerCollectionViewCell {
         
         addButton()
     }
+}
+
+// MARK: - Private Methods
+
+private extension TrackerCollectionViewCell {
     
     func formatDays(_ days: Int) -> String {
         switch days % 100 {
@@ -112,7 +119,7 @@ extension TrackerCollectionViewCell {
 }
 // MARK: - UI Configuring
 
-extension TrackerCollectionViewCell {
+private extension TrackerCollectionViewCell {
     
     // MARK: UI components
     

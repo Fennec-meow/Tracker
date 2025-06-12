@@ -23,8 +23,8 @@ final class CreatingCollectionViewCell: UICollectionViewCell {
         return ui
     }()
     
-    // MARK: Lifecycle
-    
+    // MARK: Constructor
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -46,7 +46,7 @@ extension CreatingCollectionViewCell {
 
 // MARK: - CellUI Configuring
 
-extension CreatingCollectionViewCell {
+private extension CreatingCollectionViewCell {
     
     // MARK: CellUI components
     
