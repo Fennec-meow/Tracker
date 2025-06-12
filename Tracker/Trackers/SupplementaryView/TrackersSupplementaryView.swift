@@ -1,5 +1,5 @@
 //
-//  SupplementaryView.swift
+//  TrackersSupplementaryView.swift
 //  Tracker
 //
 //  Created by Kira on 12.05.2025.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-// MARK: - SupplementaryView
+// MARK: - TrackersSupplementaryView
 
-final class SupplementaryView: UICollectionReusableView {
+final class TrackersSupplementaryView: UICollectionReusableView {
     
     // MARK: Public Property
     
@@ -23,8 +23,8 @@ final class SupplementaryView: UICollectionReusableView {
         return ui
     }()
     
-    // MARK: Lifecycle
-    
+    // MARK: Constructor
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -32,6 +32,11 @@ final class SupplementaryView: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - Public Methods
+
+extension TrackersSupplementaryView {
     
     func showNewTracker(with title: String) {
         ui.titleLabel.text = title
@@ -40,7 +45,7 @@ final class SupplementaryView: UICollectionReusableView {
 
 // MARK: - UI Configuring
 
-extension SupplementaryView {
+private extension TrackersSupplementaryView {
     
     // MARK: UI components
     

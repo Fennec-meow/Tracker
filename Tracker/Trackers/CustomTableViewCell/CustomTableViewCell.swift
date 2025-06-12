@@ -23,8 +23,8 @@ final class CustomTableViewCell: UITableViewCell {
         return ui
     }()
     
-    // MARK: Lifecycle
-    
+    // MARK: Constructor
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -63,7 +63,7 @@ extension CustomTableViewCell {
 
 // MARK: - UI Configuring
 
-extension CustomTableViewCell {
+private extension CustomTableViewCell {
     
     // MARK: UI components
     
