@@ -9,9 +9,22 @@ import UIKit
 
 // MARK: - StartViewController
 
-final class StartViewController: UIViewController {
+final class StartViewController: UIPageViewController {
+    
+    var onboardingCompletionHandler: (() -> Void)?
     
     // MARK: Private Property
+    
+    private lazy var pages: [StartPageViewController] = [
+        StartPageViewController(
+            backgroundName: "backgroundBlueImage",
+            startLabel: "Отслеживайте только то, что хотите"
+        ),
+        StartPageViewController(
+            backgroundName: "backgroundPinkImage",
+            startLabel: "Даже если это \n не литры воды и йога"
+        )
+    ]
     
     private lazy var ui: UI = {
         let ui = createUI()
@@ -19,11 +32,30 @@ final class StartViewController: UIViewController {
         return ui
     }()
     
+    // MARK: Constructor
+    
+    override init(
+        transitionStyle style: UIPageViewController.TransitionStyle,
+        navigationOrientation: UIPageViewController.NavigationOrientation,
+        options: [UIPageViewController.OptionsKey : Any]? = nil
+    ) {
+        super.init(
+            transitionStyle: .scroll,
+            navigationOrientation: navigationOrientation,
+            options: options
+        )
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupControllers()
     }
 }
 
@@ -31,27 +63,100 @@ final class StartViewController: UIViewController {
 
 private extension StartViewController {
     
-    @objc func didTapStartButton() {
+    func setupControllers() {
+        dataSource = self
+        delegate = self
         
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            let trackersViewController = TrackersViewController()
-            window.rootViewController = trackersViewController
-            // Можно добавить переход или анимацию, если нужно
+        guard let firstViewController = pages.first else {
+            return
+        }
+        setViewControllers(
+            [firstViewController],
+            direction: .forward,
+            animated: true,
+            completion: nil
+        )
+    }
+    
+    @objc func handleChangeCurrentPage() {
+        let currentPage = ui.pageControl.currentPage
+        setViewControllers(
+            [pages[currentPage]],
+            direction: .forward,
+            animated: true,
+            completion: nil
+        )
+    }
+    
+    @objc func didTapStartButton() {
+        onboardingCompletionHandler?()
+    }
+}
+
+// MARK: - UIPageViewControllerDataSource
+
+extension StartViewController: UIPageViewControllerDataSource {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerBefore viewController: UIViewController
+    ) -> UIViewController? {
+        
+        guard let viewController = viewController as? StartPageViewController,
+              let viewControllerIndex = pages.firstIndex(of: viewController)
+        else {
+            return nil
+        }
+        let previousIndex = viewControllerIndex - 1
+        guard previousIndex >= .zero else {
+            return pages.last
+        }
+        return pages[previousIndex]
+    }
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerAfter viewController: UIViewController
+    ) -> UIViewController? {
+        
+        guard let viewController = viewController as? StartPageViewController,
+              let viewControllerIndex = pages.firstIndex(of: viewController)
+        else {
+            return nil
+        }
+        let nextIndex = viewControllerIndex + 1
+        guard nextIndex < pages.count else {
+            return pages.first
+        }
+        return pages[nextIndex]
+    }
+}
+
+// MARK: - UIPageViewControllerDelegate
+
+extension StartViewController: UIPageViewControllerDelegate {
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool
+    ) {
+        
+        if let currentViewController = pageViewController.viewControllers?.first as? StartPageViewController,
+           let currentIndex = pages.firstIndex(of: currentViewController) {
+            ui.pageControl.currentPage = currentIndex
         }
     }
 }
 
 // MARK: - UI Configuring
 
-extension StartViewController {
+private extension StartViewController {
     
     // MARK: UI components
     
     struct UI {
-        
-        let backgroundImageView: UIImageView
-        let startLabelText: UILabel
+        let pageControl: UIPageControl
         let startButton: UIButton
     }
     
@@ -59,19 +164,18 @@ extension StartViewController {
     
     func createUI() -> UI {
         
-        let backgroundImageView = UIImageView()
-        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImageView.image = ImageConstants.backgroundImage
-        view.addSubview(backgroundImageView)
-        
-        let startLabelText = UILabel()
-        startLabelText.translatesAutoresizingMaskIntoConstraints = false
-        startLabelText.text = "Отслеживайте только то, что хотите"
-        startLabelText.numberOfLines = 0
-        startLabelText.textAlignment = .center
-        startLabelText.font = FontsConstants.startLabelText
-        startLabelText.textColor = .ypBlack
-        view.addSubview(startLabelText)
+        let pageControl = UIPageControl()
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.currentPageIndicatorTintColor = .ypBlack
+        pageControl.pageIndicatorTintColor = .ypBlack.withAlphaComponent(0.3)
+        pageControl.currentPage = .zero
+        pageControl.numberOfPages = pages.count
+        pageControl.addTarget(
+            self,
+            action: #selector(handleChangeCurrentPage),
+            for: .valueChanged
+        )
+        view.addSubview(pageControl)
         
         let startButton = UIButton(type: .system)
         startButton.layer.cornerRadius = 16
@@ -87,8 +191,7 @@ extension StartViewController {
         view.addSubview(startButton)
         
         return .init(
-            backgroundImageView: backgroundImageView,
-            startLabelText: startLabelText,
+            pageControl: pageControl,
             startButton: startButton
         )
     }
@@ -99,14 +202,8 @@ extension StartViewController {
         
         NSLayoutConstraint.activate( [
             
-            ui.backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            ui.backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            ui.backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            ui.backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            ui.startLabelText.topAnchor.constraint(equalTo: ui.backgroundImageView.topAnchor, constant: 432),
-            ui.startLabelText.leadingAnchor.constraint(equalTo: ui.backgroundImageView.leadingAnchor, constant: 16),
-            ui.startLabelText.trailingAnchor.constraint(equalTo: ui.backgroundImageView.trailingAnchor, constant: -16),
+            ui.pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            ui.pageControl.bottomAnchor.constraint(equalTo: ui.startButton.topAnchor, constant: -24),
             
             ui.startButton.widthAnchor.constraint(equalToConstant: 335),
             ui.startButton.heightAnchor.constraint(equalToConstant: 60),
@@ -128,7 +225,7 @@ private extension StartViewController {
     
     // MARK: FontsConstants
     
-    enum FontsConstants {
+    enum FontConstants {
         static let startLabelText: UIFont = UIFont.systemFont(ofSize: 32, weight: .bold)
     }
     

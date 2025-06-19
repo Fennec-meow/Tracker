@@ -112,7 +112,7 @@ extension ScheduleViewController: UITableViewDataSource {
 
 // MARK: - UI Configuring
 
-extension ScheduleViewController {
+private extension ScheduleViewController {
     
     // MARK: UI components
     

@@ -64,6 +64,8 @@ private extension NewCategoryViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension NewCategoryViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -84,7 +86,7 @@ extension NewCategoryViewController: UITextFieldDelegate {
 
 // MARK: - UI Configuring
 
-extension NewCategoryViewController {
+private extension NewCategoryViewController {
     
     // MARK: UI components
     
