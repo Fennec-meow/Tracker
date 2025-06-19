@@ -18,11 +18,11 @@ final class StartViewController: UIPageViewController {
     private lazy var pages: [StartPageViewController] = [
         StartPageViewController(
             backgroundName: "backgroundBlueImage",
-            startLabel: "Отслеживайте только то, что хотите"
+            startLabel: NSLocalizedString("startBlueLabelText.title", comment: "")
         ),
         StartPageViewController(
             backgroundName: "backgroundPinkImage",
-            startLabel: "Даже если это \n не литры воды и йога"
+            startLabel: NSLocalizedString("startPinkLabelText.title", comment: "")
         )
     ]
     
@@ -179,7 +179,7 @@ private extension StartViewController {
         
         let startButton = UIButton(type: .system)
         startButton.layer.cornerRadius = 16
-        startButton.setTitle("Вот это технологии!", for: .normal)
+        startButton.setTitle(NSLocalizedString("startButton.setTitle", comment: ""), for: .normal)
         startButton.backgroundColor = .ypBlack
         startButton.translatesAutoresizingMaskIntoConstraints = false
         startButton.tintColor = .ypWhite
