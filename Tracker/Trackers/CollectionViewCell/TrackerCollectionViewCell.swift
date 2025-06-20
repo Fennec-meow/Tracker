@@ -260,7 +260,7 @@ private extension TrackerCollectionViewCell {
         let completedDaysLabel = UILabel()
         completedDaysLabel.translatesAutoresizingMaskIntoConstraints = false
         completedDaysLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        completedDaysLabel.textColor = .black
+        completedDaysLabel.textColor = .ypBlack
         contentView.addSubview(completedDaysLabel)
         
         let counterButton = UIButton()
