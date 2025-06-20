@@ -41,8 +41,8 @@
 		044036012DDB913600D4A187 /* WeekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		044036062DDB913600D4A187 /* TrackersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersViewController.swift; sourceTree = "<group>"; };
 		0440360A2DDB913600D4A187 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE3D27B32E05555700E4C12F /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8AD74E2DF051C00064B4A7 /* Extension+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITextField.swift"; sourceTree = "<group>"; };
-		CEA219C82DBA1BC5002181BF /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Tracker.app; path = "/Users/user/Desktop/Swift/Практикум/Tracker/build/Debug-iphoneos/Tracker.app"; sourceTree = "<absolute>"; };
 		CEABDF652DF706940030B4CA /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,11 +50,6 @@
 		CEABDF742DFAEA630030B4CA /* Application */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Application;
-			sourceTree = "<group>";
-		};
-		CEABDF772DFAEB720030B4CA /* TabBarController */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TabBarController;
 			sourceTree = "<group>";
 		};
 		CEABDF782DFAEBAC0030B4CA /* Services */ = {
@@ -115,7 +110,6 @@
 				044035E92DDB913600D4A187 /* Font */,
 				044035EA2DDB913600D4A187 /* Assets.xcassets */,
 				044035EC2DDB913600D4A187 /* LaunchScreen.storyboard */,
-				CEABDF772DFAEB720030B4CA /* TabBarController */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -224,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				0440360D2DDB913600D4A187 /* Tracker */,
+				CE3D27B32E05555700E4C12F /* Tracker.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,7 +239,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				CEABDF742DFAEA630030B4CA /* Application */,
-				CEABDF772DFAEB720030B4CA /* TabBarController */,
 				CEABDF782DFAEBAC0030B4CA /* Services */,
 				CEABDF792DFAECD10030B4CA /* CollectionViewCell */,
 				CEABDF7A2DFAED370030B4CA /* SupplementaryView */,
@@ -256,7 +250,7 @@
 			packageProductDependencies = (
 			);
 			productName = Tracker;
-			productReference = CEA219C82DBA1BC5002181BF /* Tracker.app */;
+			productReference = CE3D27B32E05555700E4C12F /* Tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

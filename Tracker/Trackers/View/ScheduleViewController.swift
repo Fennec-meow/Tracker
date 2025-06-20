@@ -45,7 +45,7 @@ final class ScheduleViewController: UIViewController {
 private extension ScheduleViewController {
     
     func setupNavBar() {
-        navigationItem.title = "Расписание"
+        navigationItem.title = NSLocalizedString("scheduleNavigationItem.title", comment: "")
         
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.titleTextAttributes = [
@@ -118,7 +118,7 @@ private extension ScheduleViewController {
     
     struct UI {
         let scheduleTableView: UITableView
-        let donebutton: UIButton
+        let doneButton: UIButton
     }
     
     // MARK: Creating UI components
@@ -139,23 +139,23 @@ private extension ScheduleViewController {
         scheduleTableView.delegate = self
         view.addSubview(scheduleTableView)
         
-        let donebutton = UIButton()
-        donebutton.translatesAutoresizingMaskIntoConstraints = false
-        donebutton.layer.cornerRadius = 16
-        donebutton.backgroundColor = .ypBlack
-        donebutton.setTitle("Готово", for: .normal)
-        donebutton.setTitleColor(.ypWhite, for: .normal)
-        donebutton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-        donebutton.addTarget(
+        let doneButton = UIButton()
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        doneButton.layer.cornerRadius = 16
+        doneButton.backgroundColor = .ypBlack
+        doneButton.setTitle(NSLocalizedString("doneButton.setTitle", comment: ""), for: .normal)
+        doneButton.setTitleColor(.ypWhite, for: .normal)
+        doneButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        doneButton.addTarget(
             self,
             action: #selector(didTapButton),
             for: .touchUpInside
         )
-        view.addSubview(donebutton)
+        view.addSubview(doneButton)
         
         return .init(
             scheduleTableView: scheduleTableView,
-            donebutton: donebutton
+            doneButton: doneButton
         )
     }
     
@@ -170,16 +170,16 @@ private extension ScheduleViewController {
             ui.scheduleTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             ui.scheduleTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            ui.donebutton.heightAnchor.constraint(equalToConstant: 60),
-            ui.donebutton.topAnchor.constraint(equalTo: ui.scheduleTableView.bottomAnchor, constant: 47),
-            ui.donebutton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            ui.donebutton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            ui.doneButton.heightAnchor.constraint(equalToConstant: 60),
+            ui.doneButton.topAnchor.constraint(equalTo: ui.scheduleTableView.bottomAnchor, constant: 47),
+            ui.doneButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            ui.doneButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
     
     func setupUI() {
         view.backgroundColor = .ypWhite
-        print(ui.donebutton.titleLabel?.text)
+        print(ui.doneButton.titleLabel?.text)
         setupNavBar()
     }
 }
