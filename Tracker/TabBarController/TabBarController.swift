@@ -26,14 +26,14 @@ private extension TabBarController {
     func setupViewControllers() {
         let trackersViewController = TrackersViewController()
         trackersViewController.tabBarItem = UITabBarItem(
-            title: "Трекеры",
+            title: NSLocalizedString("trackersVC.UITabBarItem.title", comment: ""),
             image: ImageConstants.tabTrackerActive,
             selectedImage: nil
         )
         
         let statisticsViewController = StatisticsViewController()
         statisticsViewController.tabBarItem = UITabBarItem(
-            title: "Статистика",
+            title: NSLocalizedString("statisticsVC.UITabBarItem.title", comment: ""),
             image: ImageConstants.tabStatisticActive,
             selectedImage: nil
         )

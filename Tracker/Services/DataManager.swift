@@ -22,7 +22,8 @@ final class DataManager {
                     color: .colorSelection5,
                     emoji: "❤️",
                     schedule: [WeekDay.monday, WeekDay.saturday],
-                    type: .habit
+                    type: .habit,
+                    isPinned: false
                 ),
             ]
         ),
@@ -35,7 +36,8 @@ final class DataManager {
                     color: .colorSelection2,
                     emoji: "😻",
                     schedule: [WeekDay.friday, WeekDay.tuesday],
-                    type: .habit
+                    type: .habit,
+                    isPinned: false
                 ),
                 Tracker(
                     trackerID: UUID(),
@@ -43,7 +45,8 @@ final class DataManager {
                     color: .colorSelection1,
                     emoji: "🌺",
                     schedule: [WeekDay.wednesday, WeekDay.monday, WeekDay.thursday],
-                    type: .habit
+                    type: .habit,
+                    isPinned: false
                 ),
                 Tracker(
                     trackerID: UUID(),
@@ -51,7 +54,8 @@ final class DataManager {
                     color: .colorSelection14,
                     emoji: "❤️",
                     schedule: [WeekDay.thursday],
-                    type: .irregularEvent
+                    type: .irregularEvent,
+                    isPinned: false
                 )
             ]
         ),
@@ -64,7 +68,8 @@ final class DataManager {
                     color: .colorSelection16,
                     emoji: "🙂",
                     schedule: [WeekDay.sunday, WeekDay.tuesday],
-                    type: .habit
+                    type: .habit,
+                    isPinned: false
                 ),
                 Tracker(
                     trackerID: UUID(),
@@ -72,7 +77,8 @@ final class DataManager {
                     color: .colorSelection8,
                     emoji: "😪",
                     schedule: [WeekDay.saturday],
-                    type: .irregularEvent
+                    type: .irregularEvent,
+                    isPinned: false
                 )
             ]
         )
