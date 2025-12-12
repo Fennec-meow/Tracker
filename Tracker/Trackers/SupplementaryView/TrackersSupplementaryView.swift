@@ -1,10 +1,3 @@
-//
-//  TrackersSupplementaryView.swift
-//  Tracker
-//
-//  Created by Kira on 12.05.2025.
-//
-
 import UIKit
 
 // MARK: - TrackersSupplementaryView
@@ -24,7 +17,7 @@ final class TrackersSupplementaryView: UICollectionReusableView {
     }()
     
     // MARK: Constructor
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

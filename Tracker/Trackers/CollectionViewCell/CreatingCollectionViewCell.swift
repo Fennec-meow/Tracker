@@ -1,10 +1,3 @@
-//
-//  CreatingCollectionViewCell.swift
-//  Tracker
-//
-//  Created by Kira on 27.05.2025.
-//
-
 import UIKit
 
 // MARK: - CreatingCollectionViewCell
@@ -24,7 +17,7 @@ final class CreatingCollectionViewCell: UICollectionViewCell {
     }()
     
     // MARK: Constructor
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

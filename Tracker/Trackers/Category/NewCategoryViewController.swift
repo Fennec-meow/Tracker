@@ -1,10 +1,3 @@
-//
-//  NewCategoryViewController.swift
-//  Tracker
-//
-//  Created by Kira on 13.05.2025.
-//
-
 import UIKit
 
 // MARK: - NewCategoryViewControllerDelegate

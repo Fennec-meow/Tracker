@@ -1,10 +1,3 @@
-//
-//  StartPageViewController.swift
-//  Tracker
-//
-//  Created by Kira on 09.06.2025.
-//
-
 import UIKit
 
 // MARK: - StartPageViewController
@@ -52,7 +45,7 @@ private extension StartPageViewController {
         
         let backgroundImageView: UIImageView
         let startLabelText: UILabel
-
+        
     }
     
     // MARK: Creating UI components

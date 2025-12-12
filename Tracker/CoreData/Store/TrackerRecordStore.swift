@@ -1,10 +1,3 @@
-//
-//  TrackerRecordStore.swift
-//  Tracker
-//
-//  Created by Kira on 30.05.2025.
-//
-
 import CoreData
 import UIKit
 

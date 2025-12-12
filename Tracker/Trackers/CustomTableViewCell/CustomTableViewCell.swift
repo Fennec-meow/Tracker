@@ -1,10 +1,3 @@
-//
-//  CustomTableViewCell.swift
-//  Tracker
-//
-//  Created by Kira on 08.05.2025.
-//
-
 import UIKit
 
 // MARK: - CustomTableViewCell
@@ -24,7 +17,7 @@ final class CustomTableViewCell: UITableViewCell {
     }()
     
     // MARK: Constructor
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }

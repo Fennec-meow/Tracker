@@ -1,10 +1,3 @@
-//
-//  TrackerCategoryStore.swift
-//  Tracker
-//
-//  Created by Kira on 30.05.2025.
-//
-
 import CoreData
 import UIKit
 
@@ -218,7 +211,7 @@ extension TrackerCategoryStore: TrackerCategoryStoreProtocol {
             completion([])
         }
     }
-
+    
     func fetchCategoryCoreData(for category: TrackerCategory) throws -> TrackerCategoryCoreData {
         do {
             let categoryCoreData = try fetchTrackerCategoryCoreData(for: category)
@@ -227,7 +220,7 @@ extension TrackerCategoryStore: TrackerCategoryStoreProtocol {
             throw error
         }
     }
-
+    
     func addCategory(_ category: TrackerCategory, completion: @escaping (Error?) -> Void) {
         do {
             try addNewCategory(category)

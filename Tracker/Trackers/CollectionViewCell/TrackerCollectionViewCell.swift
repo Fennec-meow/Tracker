@@ -1,10 +1,3 @@
-//
-//  TrackerCollectionViewCell.swift
-//  Tracker
-//
-//  Created by Kira on 12.05.2025.
-//
-
 import UIKit
 
 // MARK: - TrackerCollectionViewCellDelegate
@@ -169,9 +162,11 @@ extension TrackerCollectionViewCell: UIContextMenuInteractionDelegate {
                     parameters: ["event": "click", "screen": "Main", "item": "cell"]
                 )
                 
-                let pinAction = UIAction(title: self.isPinned ?
-                                        NSLocalizedString("unpinAction.title", comment: "") :
-                                        NSLocalizedString("pinAction.title", comment: ""))
+                let pinAction = UIAction(
+                    title: self.isPinned ?
+                    NSLocalizedString("unpinAction.title", comment: "") :
+                        NSLocalizedString("pinAction.title", comment: "")
+                )
                 { [weak self] _ in
                     guard let self else { return }
                     guard let trackerID = self.id,

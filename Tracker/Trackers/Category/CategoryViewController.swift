@@ -1,10 +1,3 @@
-//
-//  CategoryViewController.swift
-//  Tracker
-//
-//  Created by Kira on 08.05.2025.
-//
-
 import UIKit
 
 // MARK: - CategoryViewControllerDelegate
@@ -26,7 +19,7 @@ final class CategoryViewController: UIViewController {
     
     private var selectedCategories: Int?
     private var viewModel: CategoryViewModel?
-
+    
     private lazy var ui: UI = {
         let ui = createUI()
         layout(ui)
@@ -113,7 +106,7 @@ extension CategoryViewController: UITableViewDelegate {
         
         let categoryName = viewModel?.category(at: indexPath.row)
         let allCategories = viewModel?.categoryNames() ?? []
-
+        
         tableView.reloadRows(at: [indexPath], with: .none)
         delegate?.categoryViewControllerDidSelectCategories(
             categoryName?.headingCategory ?? String(),
@@ -254,10 +247,10 @@ private extension CategoryViewController {
 extension CategoryViewController: NewCategoryViewControllerDelegate {
     func didCreateNewCategory(withName name: TrackerCategory) {
         viewModel?.addCategory(name)
-
-            addNewTrackerCategory()
-            ui.categoryTableView.reloadData()
-            updateUIForCategory()
+        
+        addNewTrackerCategory()
+        ui.categoryTableView.reloadData()
+        updateUIForCategory()
     }
 }
 

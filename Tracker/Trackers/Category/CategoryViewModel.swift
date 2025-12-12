@@ -1,10 +1,3 @@
-//
-//  CategoryViewModel.swift
-//  Tracker
-//
-//  Created by Kira on 10.06.2025.
-//
-
 import Foundation
 
 // MARK: - CategoryViewModel
@@ -22,7 +15,7 @@ final class CategoryViewModel {
     private var categories: [TrackerCategory] = []
     
     // MARK: Constructor
-
+    
     init(categoryStore: TrackerCategoryStoreProtocol) {
         self.categoryStore = categoryStore
     }

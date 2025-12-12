@@ -1,10 +1,3 @@
-//
-//  TrackerStore.swift
-//  Tracker
-//
-//  Created by Kira on 30.05.2025.
-//
-
 import CoreData
 import UIKit
 
@@ -167,25 +160,25 @@ extension TrackerStore {
     }
     
     internal func pinTracker(id: UUID, at indexPath: IndexPath) throws {
-            let fetchRequest: NSFetchRequest<TrackerCoreData> = TrackerCoreData.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "trackerID == %@", id as CVarArg)
-            if let result = try context.fetch(fetchRequest).first {
-                result.isPinned = !result.isPinned
-                try saveContext()
-            } else {
-                throw TrackerStoreError.trackerNotFound
-            }
+        let fetchRequest: NSFetchRequest<TrackerCoreData> = TrackerCoreData.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "trackerID == %@", id as CVarArg)
+        if let result = try context.fetch(fetchRequest).first {
+            result.isPinned = !result.isPinned
+            try saveContext()
+        } else {
+            throw TrackerStoreError.trackerNotFound
         }
-
-        internal func fetchTrackerByID(id: UUID, at indexPath: IndexPath) throws -> Tracker {
-            let fetchRequest: NSFetchRequest<TrackerCoreData> = TrackerCoreData.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "trackerID == %@", id as CVarArg)
-            if let result = try context.fetch(fetchRequest).first {
-                return try modelEntitiesTracker(trackerCoreData: result)
-            } else {
-                throw TrackerStoreError.trackerNotFound
-            }
+    }
+    
+    internal func fetchTrackerByID(id: UUID, at indexPath: IndexPath) throws -> Tracker {
+        let fetchRequest: NSFetchRequest<TrackerCoreData> = TrackerCoreData.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "trackerID == %@", id as CVarArg)
+        if let result = try context.fetch(fetchRequest).first {
+            return try modelEntitiesTracker(trackerCoreData: result)
+        } else {
+            throw TrackerStoreError.trackerNotFound
         }
+    }
 }
 
 // MARK: - NSFetchedResultsControllerDelegate

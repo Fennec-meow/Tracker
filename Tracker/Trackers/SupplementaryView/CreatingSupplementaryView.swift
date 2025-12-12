@@ -1,10 +1,3 @@
-//
-//  CreatingSupplementaryView.swift
-//  Tracker
-//
-//  Created by Kira on 27.05.2025.
-//
-
 import UIKit
 
 // MARK: - CreatingSupplementaryView
@@ -24,7 +17,7 @@ final class CreatingSupplementaryView: UICollectionReusableView {
     }()
     
     // MARK: Constructor
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

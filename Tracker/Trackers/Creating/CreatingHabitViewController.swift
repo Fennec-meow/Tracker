@@ -1,10 +1,3 @@
-//
-//  CreatingHabitViewController.swift
-//  Tracker
-//
-//  Created by Kira on 07.05.2025.
-//
-
 import UIKit
 
 // MARK: - CreatingHabitViewController
@@ -27,7 +20,7 @@ final class CreatingHabitViewController: UIViewController {
     ]
     
     private var selectedWeekdays: [Int: Bool] = [:]
-
+    
     private var scheduleDay: [WeekDay] = []
     private var scheduleCategory = String()
     
@@ -78,8 +71,8 @@ final class CreatingHabitViewController: UIViewController {
         }
         super.init(nibName: nil, bundle: nil)
     }
-
-
+    
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -625,37 +618,37 @@ private extension CreatingHabitViewController {
         setupNavBar()
         
         if let tracker = selectedTracker {
-                // Это режим редактирования
-                navigationItem.title = NSLocalizedString("Редактирование", comment: "")
-                // Заполните UI значениями трекера
-                ui.trackerNameTextField.text = tracker.name
-                // Выделите выбранный эмодзи
-                if let emojiIndex = emojis.firstIndex(of: tracker.emoji) {
-                    selectedIndexEmoji = emojiIndex
-                    // Обновите UI ячейки, например, перезагрузкой коллекции
-                }
-                // Выделите выбранный цвет
-                if let colorIndex = colors.firstIndex(where: { $0 == tracker.color }) {
-                    selectedIndexColor = colorIndex
-                    // Обновите UI ячейки
-                }
-                // Установите schedule
-                scheduleDay = tracker.schedule
-                // Обновите scheduleText
-                // Можно вызвать delegate или напрямую обновить UI
-                // Например:
-                if scheduleDay.count == WeekDay.allCases.count {
-                    scheduleText = NSLocalizedString("selectedAllDay.subText", comment: "")
-                } else {
-                    scheduleText = scheduleDay.map { $0.shortDay }.joined(separator: ", ")
-                }
-                // Обновите таблицу
-                ui.contentsTableView.reloadData()
-                // Включите кнопку создания
-                ui.createButton.isEnabled = true
-                ui.createButton.backgroundColor = .ypBlack
+            // Это режим редактирования
+            navigationItem.title = NSLocalizedString("Редактирование", comment: "")
+            // Заполните UI значениями трекера
+            ui.trackerNameTextField.text = tracker.name
+            // Выделите выбранный эмодзи
+            if let emojiIndex = emojis.firstIndex(of: tracker.emoji) {
+                selectedIndexEmoji = emojiIndex
+                // Обновите UI ячейки, например, перезагрузкой коллекции
             }
-            // Остальной код
-            stackSubView()
+            // Выделите выбранный цвет
+            if let colorIndex = colors.firstIndex(where: { $0 == tracker.color }) {
+                selectedIndexColor = colorIndex
+                // Обновите UI ячейки
+            }
+            // Установите schedule
+            scheduleDay = tracker.schedule
+            // Обновите scheduleText
+            // Можно вызвать delegate или напрямую обновить UI
+            // Например:
+            if scheduleDay.count == WeekDay.allCases.count {
+                scheduleText = NSLocalizedString("selectedAllDay.subText", comment: "")
+            } else {
+                scheduleText = scheduleDay.map { $0.shortDay }.joined(separator: ", ")
+            }
+            // Обновите таблицу
+            ui.contentsTableView.reloadData()
+            // Включите кнопку создания
+            ui.createButton.isEnabled = true
+            ui.createButton.backgroundColor = .ypBlack
         }
+        // Остальной код
+        stackSubView()
+    }
 }
